@@ -1,0 +1,7 @@
+image: maven:latest
+
+build:
+  script: mvn clean:clean compile war:war
+
+test:
+  script: mvn test  
