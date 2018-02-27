@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "agent", schema = "agent")
+@Table(name = "agent")
 public class Agent implements Serializable {
 
     @Id
@@ -30,7 +30,7 @@ public class Agent implements Serializable {
     }
 
     public String getFirstName() {
-        return first_name;
+        return first_name.trim();
     }
 
     public void setFirstName(String first_name) {
@@ -38,7 +38,7 @@ public class Agent implements Serializable {
     }
 
     public String getLastName() {
-        return last_name;
+        return last_name.trim();
     }
 
     public void setLastName(String last_name) {
@@ -46,10 +46,16 @@ public class Agent implements Serializable {
     }
 
     public String getTelephone() {
-        return telephone;
+        return telephone.trim();
     }
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    @Override
+    public String toString() {
+
+        return "{first_name:" + getFirstName() + "," + "last_name:" + getLastName() + "," + " telephone:" + getTelephone() +"}";
     }
 }

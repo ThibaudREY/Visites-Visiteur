@@ -47,6 +47,7 @@ public class RestAgent {
     }
 
     @GET
+    @Produces({MediaType.TEXT_PLAIN})
     @Path("/{id}")
     public Response Read(@PathParam("id") int id) {
 

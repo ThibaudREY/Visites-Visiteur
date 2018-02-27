@@ -1,6 +1,7 @@
 package com.visites.agent;
 
 import com.visites.agent.repository.AgentRepository;
+import com.visites.agent.model.Agent;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -20,13 +21,13 @@ public class TestRestAgent {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
 
-        ir.Create("");
+        ir.Create("Bob","Letton", "90982818");
 
-        Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
         int last = (int) query.getSingleResult();
         emf.close();
 
-        int id = ir.Create("{TestCreate: aze}");
+        int id = ir.Create("Bob", "Letton","90982818");
 
         org.junit.Assert.assertEquals(last + 1, id);
 
@@ -38,13 +39,13 @@ public class TestRestAgent {
         AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
         int last = (int) query.getSingleResult();
         emf.close();
 
         String yml = ir.Read(last);
 
-        org.junit.Assert.assertEquals(yml, "{TestCreate: aze}");
+        org.junit.Assert.assertEquals(yml, "{first_name:Bob, last_name:Letton, telephone:90982818}");
     }
 
     @Test
@@ -53,11 +54,11 @@ public class TestRestAgent {
         AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
         int last = (int) query.getSingleResult();
         emf.close();
 
-        int res = ir.Update(last, "{TestUpdate: aze}");
+        int res = ir.Update(last, "{TestUpdate: aze}", "{TestUpdate: aze}","{TestUpdate: aze}");
 
         org.junit.Assert.assertEquals(res, 1);
 
@@ -72,7 +73,7 @@ public class TestRestAgent {
         AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
         int last = (int) query.getSingleResult();
         emf.close();
 
