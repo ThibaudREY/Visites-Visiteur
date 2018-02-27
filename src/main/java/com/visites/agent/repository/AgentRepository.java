@@ -1,26 +1,28 @@
-package com.data.json.repository;
+package com.visites.agent.repository;
 
-import com.data.json.model.Json;
+import com.visites.agent.model.Agent;
 import org.hibernate.Session;
 
 import javax.persistence.*;
 
-public class JsonRepository {
+public class AgentRepository {
 
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
 
 
-    public int Create(String body) {
+    public int Create(String first_name, String last_name, String telephone) {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
         Session session = (Session) emf.getDelegate();
 
         session.getTransaction().begin();
 
-        Json json = new Json();
-        json.setBody(body);
+        Agent agent = new Agent();
+        agent.setFirstName(first_name);
+        agent.setLastName(last_name);
+        agent.setTelephone(telephone);
 
-        int id = (Integer) session.save(json);
+        int id = (Integer) session.save(agent);
 
         session.getTransaction().commit();
 
@@ -33,27 +35,29 @@ public class JsonRepository {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
 
-        Query query = emf.createQuery("SELECT i FROM Json i WHERE i.id = :id");
+        Query query = emf.createQuery("SELECT i FROM agent i WHERE i.id = :id");
 
         query.setParameter("id", id);
 
-        Json res = (Json) query.getSingleResult();
+        Agent res = (Agent) query.getSingleResult();
 
         emf.close();
 
-        return res.getBody();
+        return res.getLastName() + res.getFirstName() + res.getTelephone();
     }
 
-    public int Update(int id, String body) {
+    public int Update(int id, String first_name, String last_name, String telephone) {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
         Session session = (Session) emf.getDelegate();
 
         session.getTransaction().begin();
 
-        Query query = emf.createQuery("UPDATE Json i SET i.body = :body WHERE i.id = :id");
+        Query query = emf.createQuery("UPDATE agent i SET i.first_name = :first_name, i.last_name = :last_name, i.telephone = := telephone WHERE i.id = :id");
 
-        query.setParameter("body", body);
+        query.setParameter("first_name", first_name);
+        query.setParameter("last_name", last_name);
+        query.setParameter("telephone", telephone);
         query.setParameter("id", id);
 
         int res = query.executeUpdate();
@@ -72,7 +76,7 @@ public class JsonRepository {
 
         session.getTransaction().begin();
 
-        Query query = emf.createQuery("DELETE FROM Json i WHERE i.id = :id");
+        Query query = emf.createQuery("DELETE FROM agent i WHERE i.id = :id");
         query.setParameter("id", id);
 
         int res = query.executeUpdate();

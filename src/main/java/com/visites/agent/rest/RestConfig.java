@@ -1,4 +1,4 @@
-package com.data.json.rest;
+package com.visites.agent.rest;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Stateless
-@ApplicationPath("/")
+@ApplicationPath("/agent")
 public class RestConfig  extends Application {
 
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
@@ -32,7 +32,7 @@ public class RestConfig  extends Application {
         resources.add(org.glassfish.jersey.jackson.JacksonFeature.class);
 
 
-        resources.add(RestJson.class);
+        resources.add(RestAgent.class);
 
 
         System.out.println("REST configuration ended successfully.");

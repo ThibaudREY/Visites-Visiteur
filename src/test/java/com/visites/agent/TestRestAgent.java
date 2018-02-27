@@ -1,6 +1,6 @@
-package com.data.json;
+package com.visites.agent;
 
-import com.data.json.repository.JsonRepository;
+import com.visites.agent.repository.AgentRepository;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -11,12 +11,12 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestRestJson {
+public class TestRestAgent {
 
     @Test()
     public void AtestCreate() {
 
-        JsonRepository ir = new JsonRepository();
+        AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
 
@@ -35,7 +35,7 @@ public class TestRestJson {
     @Test
     public void BtestGet() {
 
-        JsonRepository ir = new JsonRepository();
+        AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
         Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
@@ -50,7 +50,7 @@ public class TestRestJson {
     @Test
     public void CtestUpdate() {
 
-        JsonRepository ir = new JsonRepository();
+        AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
         Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
@@ -69,7 +69,7 @@ public class TestRestJson {
 
     @Test
     public void DtestDelete() {
-        JsonRepository ir = new JsonRepository();
+        AgentRepository ir = new AgentRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
         Query query = emf.createQuery("SELECT max(i.id) FROM Json i");
