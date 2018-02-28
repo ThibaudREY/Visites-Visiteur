@@ -11,7 +11,6 @@ public class RestAgent {
 
 
     @POST
-    @Consumes({MediaType.TEXT_PLAIN})
     @Produces({MediaType.TEXT_PLAIN})
     public Response Create(
             @QueryParam("first_name") String first_name,
@@ -20,6 +19,10 @@ public class RestAgent {
     ) {
 
         AgentRepository ir = new AgentRepository();
+
+        System.out.println(first_name);
+        System.out.println(last_name);
+        System.out.println(telephone);
 
         return Response.status(200).entity(ir.Create(first_name, last_name, telephone)).build();
 
@@ -62,6 +65,24 @@ public class RestAgent {
         AgentRepository ir = new AgentRepository();
 
         return Response.status(200).entity(ir.Read(id)).build();
+
+    }
+
+    @GET
+    @Path("/all")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response ReadAll() {
+
+        AgentRepository ir = new AgentRepository();
+
+        return Response
+                .status(200).header("Access-Control-Allow-Origin", "*")
+                .header("Access-Control-Allow-Credentials", "true")
+                .header("Access-Control-Allow-Headers",
+                        "origin, content-type, accept, authorization")
+                .header("Access-Control-Allow-Methods",
+                        "GET, POST, PUT, DELETE, OPTIONS, HEAD")
+                .entity(ir.All()).build();
 
     }
 

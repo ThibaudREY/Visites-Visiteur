@@ -1,10 +1,13 @@
 package com.visites.agent.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "agent")
+@JsonIgnoreProperties
 public class    Agent implements Serializable {
 
     @Id
@@ -51,11 +54,5 @@ public class    Agent implements Serializable {
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
-    }
-
-    @Override
-    public String toString() {
-
-        return "{first_name:" + getFirstName() + ", " + "last_name:" + getLastName() + ", " + "telephone:" + getTelephone() +"}";
     }
 }

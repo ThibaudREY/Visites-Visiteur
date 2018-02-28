@@ -4,6 +4,7 @@ import com.visites.agent.model.Agent;
 import org.hibernate.Session;
 
 import javax.persistence.*;
+import java.util.List;
 
 public class AgentRepository {
 
@@ -88,4 +89,20 @@ public class AgentRepository {
         return res;
     }
 
+    public List All() {
+        EntityManager emf = entityManagerFactory.createEntityManager();
+        Session session = (Session) emf.getDelegate();
+
+        session.getTransaction().begin();
+
+        Query query = emf.createQuery("FROM Agent i");
+
+        List res = query.getResultList();
+
+        session.getTransaction().commit();
+
+        emf.close();
+
+        return res;
+    }
 }
