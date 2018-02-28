@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Stateless
-@ApplicationPath("/agent")
+@ApplicationPath("/")
 public class RestConfig  extends Application {
 
     EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");

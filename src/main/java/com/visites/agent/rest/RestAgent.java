@@ -6,14 +6,18 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/")
+@Path("agent")
 public class RestAgent {
 
 
     @POST
     @Consumes({MediaType.TEXT_PLAIN})
     @Produces({MediaType.TEXT_PLAIN})
-    public Response Create(String first_name, String last_name, String telephone) {
+    public Response Create(
+            @QueryParam("first_name") String first_name,
+            @QueryParam("last_name") String last_name,
+            @QueryParam("telephone") String telephone
+    ) {
 
         AgentRepository ir = new AgentRepository();
 
@@ -36,7 +40,12 @@ public class RestAgent {
 
     @PUT
     @Path("/{id}")
-    public Response Update(@PathParam("id") int id, String first_name, String last_name, String telephone) {
+    public Response Update(
+            @QueryParam("id") int id,
+            @QueryParam("first_name") String first_name,
+            @QueryParam("last_name") String last_name,
+            @QueryParam("telephone") String telephone
+    ) {
 
         AgentRepository ir = new AgentRepository();
 
@@ -47,7 +56,6 @@ public class RestAgent {
     }
 
     @GET
-    @Produces({MediaType.TEXT_PLAIN})
     @Path("/{id}")
     public Response Read(@PathParam("id") int id) {
 

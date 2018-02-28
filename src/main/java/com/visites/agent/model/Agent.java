@@ -5,11 +5,11 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "agent")
-public class Agent implements Serializable {
+public class    Agent implements Serializable {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "first_name")
@@ -56,6 +56,6 @@ public class Agent implements Serializable {
     @Override
     public String toString() {
 
-        return "{first_name:" + getFirstName() + "," + "last_name:" + getLastName() + "," + " telephone:" + getTelephone() +"}";
+        return "{first_name:" + getFirstName() + ", " + "last_name:" + getLastName() + ", " + "telephone:" + getTelephone() +"}";
     }
 }
