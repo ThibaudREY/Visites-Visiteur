@@ -1,12 +1,12 @@
-package com.visites.agent.repository;
+package com.visites.visiteur.repository;
 
-import com.visites.agent.model.Agent;
+import com.visites.visiteur.model.Visiteur;
 import org.hibernate.Session;
 
 import javax.persistence.*;
 import java.util.List;
 
-public class AgentRepository {
+public class VisiteurRepository {
 
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
 
@@ -18,12 +18,12 @@ public class AgentRepository {
 
         session.getTransaction().begin();
 
-        Agent agent = new Agent();
-        agent.setFirstName(first_name);
-        agent.setLastName(last_name);
-        agent.setTelephone(telephone);
+        Visiteur visiteur = new Visiteur();
+        visiteur.setFirstName(first_name);
+        visiteur.setLastName(last_name);
+        visiteur.setTelephone(telephone);
 
-        int id = (Integer) session.save(agent);
+        int id = (Integer) session.save(visiteur);
 
         session.getTransaction().commit();
 
@@ -36,11 +36,11 @@ public class AgentRepository {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
 
-        Query query = emf.createQuery("SELECT i FROM Agent i WHERE i.id = :id");
+        Query query = emf.createQuery("SELECT i FROM Visiteur i WHERE i.id = :id");
 
         query.setParameter("id", id);
 
-        Agent res = (Agent) query.getSingleResult();
+        Visiteur res = (Visiteur) query.getSingleResult();
 
         emf.close();
 
@@ -54,7 +54,7 @@ public class AgentRepository {
 
         session.getTransaction().begin();
 
-        Query query = emf.createQuery("UPDATE Agent i SET i.first_name = :first_name, i.last_name = :last_name, i.telephone = := telephone WHERE i.id = :id");
+        Query query = emf.createQuery("UPDATE Visiteur i SET i.first_name = :first_name, i.last_name = :last_name, i.telephone = := telephone WHERE i.id = :id");
 
         query.setParameter("first_name", first_name);
         query.setParameter("last_name", last_name);
@@ -77,7 +77,7 @@ public class AgentRepository {
 
         session.getTransaction().begin();
 
-        Query query = emf.createQuery("DELETE FROM Agent i WHERE i.id = :id");
+        Query query = emf.createQuery("DELETE FROM Visiteur i WHERE i.id = :id");
         query.setParameter("id", id);
 
         int res = query.executeUpdate();
@@ -95,7 +95,7 @@ public class AgentRepository {
 
         session.getTransaction().begin();
 
-        Query query = emf.createQuery("FROM Agent i");
+        Query query = emf.createQuery("FROM Visiteur i");
 
         List res = query.getResultList();
 

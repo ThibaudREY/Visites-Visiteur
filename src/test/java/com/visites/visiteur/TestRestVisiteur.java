@@ -1,7 +1,6 @@
-package com.visites.agent;
+package com.visites.visiteur;
 
-import com.visites.agent.repository.AgentRepository;
-import com.visites.agent.model.Agent;
+import com.visites.visiteur.repository.VisiteurRepository;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -12,18 +11,18 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestRestAgent {
+public class TestRestVisiteur {
 
     @Test()
     public void AtestCreate() {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
 
         ir.Create("Bob","Letton", "90982818");
 
-        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Visiteur i");
         int last = (int) query.getSingleResult();
         emf.close();
 
@@ -36,10 +35,10 @@ public class TestRestAgent {
     @Test
     public void BtestGet() {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Visiteur i");
         int last = (int) query.getSingleResult();
         emf.close();
 
@@ -51,10 +50,10 @@ public class TestRestAgent {
     @Test
     public void CtestUpdate() {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Visiteur i");
         int last = (int) query.getSingleResult();
         emf.close();
 
@@ -70,10 +69,10 @@ public class TestRestAgent {
 
     @Test
     public void DtestDelete() {
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
         EntityManager emf = entityManagerFactory.createEntityManager();
-        Query query = emf.createQuery("SELECT max(i.id) FROM Agent i");
+        Query query = emf.createQuery("SELECT max(i.id) FROM Visiteur i");
         int last = (int) query.getSingleResult();
         emf.close();
 

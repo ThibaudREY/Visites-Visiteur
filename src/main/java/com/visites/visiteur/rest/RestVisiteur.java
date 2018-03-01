@@ -1,13 +1,13 @@
-package com.visites.agent.rest;
+package com.visites.visiteur.rest;
 
-import com.visites.agent.repository.AgentRepository;
+import com.visites.visiteur.repository.VisiteurRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("agent")
-public class RestAgent {
+@Path("visiteur")
+public class RestVisiteur {
 
 
     @POST
@@ -18,7 +18,7 @@ public class RestAgent {
             @QueryParam("telephone") String telephone
     ) {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
 
         System.out.println(first_name);
         System.out.println(last_name);
@@ -33,7 +33,7 @@ public class RestAgent {
     @Path("/{id}")
     public Response Delete(@PathParam("id") int id) {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
 
         ir.Delete(id);
 
@@ -50,7 +50,7 @@ public class RestAgent {
             @QueryParam("telephone") String telephone
     ) {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
 
         ir.Update(id, first_name, last_name, telephone);
 
@@ -62,7 +62,7 @@ public class RestAgent {
     @Path("/{id}")
     public Response Read(@PathParam("id") int id) {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
 
         return Response.status(200).entity(ir.Read(id)).build();
 
@@ -73,7 +73,7 @@ public class RestAgent {
     @Produces({MediaType.APPLICATION_JSON})
     public Response ReadAll() {
 
-        AgentRepository ir = new AgentRepository();
+        VisiteurRepository ir = new VisiteurRepository();
 
         return Response
                 .status(200).header("Access-Control-Allow-Origin", "*")

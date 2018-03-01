@@ -1,4 +1,4 @@
-package com.visites.agent.rest;
+package com.visites.visiteur.rest;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -32,7 +32,7 @@ public class RestConfig  extends Application {
         resources.add(org.glassfish.jersey.jackson.JacksonFeature.class);
 
 
-        resources.add(RestAgent.class);
+        resources.add(RestVisiteur.class);
 
 
         System.out.println("REST configuration ended successfully.");

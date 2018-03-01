@@ -1,4 +1,4 @@
-package com.visites.agent.model;
+package com.visites.visiteur.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -6,9 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "agent")
+@Table(name = "visiteur")
 @JsonIgnoreProperties
-public class    Agent implements Serializable {
+public class Visiteur implements Serializable {
 
     @Id
     @Column(name="id")
