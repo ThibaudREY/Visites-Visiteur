@@ -19,8 +19,8 @@ public class VisiteurRepository {
         session.getTransaction().begin();
 
         Visiteur visiteur = new Visiteur();
-        visiteur.setFirstName(first_name);
-        visiteur.setLastName(last_name);
+        visiteur.setFirst_name(first_name);
+        visiteur.setLast_name(last_name);
         visiteur.setTelephone(telephone);
 
         int id = (Integer) session.save(visiteur);
