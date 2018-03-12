@@ -11,7 +11,7 @@ public class VisiteurRepository {
     private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ini_PU");
 
 
-    public int Create(String first_name, String last_name, String telephone) {
+    public int Create(String first_name, String last_name, String telephone, String adresse) {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
         Session session = (Session) emf.getDelegate();
@@ -22,6 +22,7 @@ public class VisiteurRepository {
         visiteur.setFirst_name(first_name);
         visiteur.setLast_name(last_name);
         visiteur.setTelephone(telephone);
+        visiteur.setAdresse(adresse);
 
         int id = (Integer) session.save(visiteur);
 
@@ -47,7 +48,7 @@ public class VisiteurRepository {
         return res.toString();
     }
 
-    public int Update(int id, String first_name, String last_name, String telephone) {
+    public int Update(int id, String first_name, String last_name, String telephone, String adresse) {
 
         EntityManager emf = entityManagerFactory.createEntityManager();
         Session session = (Session) emf.getDelegate();
@@ -59,6 +60,7 @@ public class VisiteurRepository {
         query.setParameter("first_name", first_name);
         query.setParameter("last_name", last_name);
         query.setParameter("telephone", telephone);
+        query.setParameter("adresse", adresse);
         query.setParameter("id", id);
 
         int res = query.executeUpdate();

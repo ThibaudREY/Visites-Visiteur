@@ -24,6 +24,9 @@ public class Visiteur implements Serializable {
     @Column(name = "telephone")
     private String telephone;
 
+    @Column(name = "adresse")
+    private String adresse;
+
     public int getId() {
         return id;
     }
@@ -56,12 +59,17 @@ public class Visiteur implements Serializable {
         this.telephone = telephone;
     }
 
+    public String getAdresse(){ return adresse.trim();}
+
+    public void setAdresse(String adresse){this.adresse = adresse;}
+
     @Override
     public String toString() {
         return "{" +
                 "\"first_name\": \"" + this.getFirst_name()+ "\"," +
                 "\"last_name\": \"" + this.getLast_name() + "\"," +
-                "\"telephone\": \"" + this.getTelephone() + "\"" +
+                "\"telephone\": \"" + this.getTelephone() + "\"," +
+                "\"adresse\": \"" + this.getAdresse() + "\"" +
             "}";
     }
 }

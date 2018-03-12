@@ -16,7 +16,8 @@ public class RestVisiteur {
     public Response Create(
             @QueryParam("first_name") String first_name,
             @QueryParam("last_name") String last_name,
-            @QueryParam("telephone") String telephone
+            @QueryParam("telephone") String telephone,
+            @QueryParam("adresse") String adresse
     ) {
 
         VisiteurRepository ir = new VisiteurRepository();
@@ -24,8 +25,9 @@ public class RestVisiteur {
         System.out.println(first_name);
         System.out.println(last_name);
         System.out.println(telephone);
+        System.out.println(adresse);
 
-        return Response.status(200).entity(ir.Create(first_name, last_name, telephone)).build();
+        return Response.status(200).entity(ir.Create(first_name, last_name, telephone,adresse)).build();
 
     }
 
@@ -57,7 +59,8 @@ public class RestVisiteur {
                 id,
                 post.getString("first_name"),
                 post.getString("last_name"),
-                post.getString("telephone")
+                post.getString("telephone"),
+                post.getString("adresse")
         );
 
         return Response.status(200).entity("Acknoleged: true").build();
